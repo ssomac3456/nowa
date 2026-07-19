@@ -17,10 +17,11 @@ h3{
     color: #66615F;
 }
 h4{
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 500;
     line-height: 1.2;
-    color: #66615F;
+    color: #2C2A2A;
+    line-height: 45px;
 }
 h5{
     font-size: 20px;
