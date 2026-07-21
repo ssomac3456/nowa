@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 모든 요소의 기본 여백을 제거하고
+   width 계산을 편하게 만들어 줌 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* 버튼에 브라우저 기본 글꼴이 아닌
+   body의 글꼴을 그대로 사용하게 함 */
+      button {
+        font: inherit;
+      }
+
+      /* 페이지 전체 기본 설정 */
+      body {
+        min-height: 100vh;
+        font-family: Pretendard, Arial, sans-serif;
+        color: #2c2a2a;
+        background-color: #fffdfb;
+      }
+
+      /* FAQ 전체 구역 */
+      .faq-section {
+        min-height: 100vh;
+        padding: 100px 40px;
+        display: flex;
+        align-items: flex-start;
+        background-color: #fffdfb;
+      }
+
+      /* 왼쪽과 오른쪽을 감싸는 영역 */
+      .faq-inner {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-columns: 1fr 1.45fr;
+        gap: 110px;
+      }
+
+      /* =========================
+   왼쪽 소개 영역
+========================= */
+
+      .faq-intro {
+        padding-top: 16px;
+      }
+
+      .faq-label {
+        display: inline-block;
+        margin-bottom: 24px;
+
+        color: #4f7a75;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+
+      .faq-title {
+        margin-bottom: 26px;
+
+        color: #2c2a2a;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: -0.04em;
+      }
+
+      /* 제목의 두 번째 줄 */
+      .faq-title strong {
+        color: #4f7a75;
+        font-weight: 700;
+      }
+
+      .faq-description {
+        max-width: 420px;
+        margin-bottom: 46px;
+
+        color: #77716e;
+        font-size: 16px;
+        line-height: 1.9;
+        word-break: keep-all;
+      }
+
+      .faq-guide {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .faq-guide-line {
+        width: 40px;
+        height: 1px;
+        background-color: #b9c8c5;
+      }
+
+      .faq-guide-text {
+        color: #77716e;
+        font-size: 12px;
+      }
+
+      /* =========================
+   오른쪽 FAQ 목록
+========================= */
+
+      .faq-list {
+        width: 100%;
+        border-top: 1px solid #d8d3cf;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid #d8d3cf;
+      }
+
+      /* 질문 버튼 */
+      .faq-question {
+        width: 100%;
+        min-height: 76px;
+        padding: 0 16px;
+
+        display: grid;
+        grid-template-columns: 38px 1fr 32px;
+        align-items: center;
+        gap: 14px;
+
+        border: 0;
+        background-color: transparent;
+        color: #2c2a2a;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      /* 마우스를 올렸을 때 */
+      .faq-question:hover {
+        background-color: rgba(79, 122, 117, 0.035);
+      }
+
+      .faq-number {
+        color: #9b9692;
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .faq-question-title {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.5;
+        word-break: keep-all;
+      }
+
+      /* 원형 아이콘 */
+      .faq-icon {
+        position: relative;
+
+        width: 30px;
+        height: 30px;
+
+        border: 1px solid #c5c0bc;
+        border-radius: 50%;
+      }
+
+      /* +의 가로선 */
+      .faq-icon::before {
+        content: "";
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 10px;
+        height: 1px;
+
+        background-color: #4f7a75;
+        transform: translate(-50%, -50%);
+      }
+
+      /* +의 세로선 */
+      .faq-icon::after {
+        content: "";
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        width: 1px;
+        height: 10px;
+
+        background-color: #4f7a75;
+        transform: translate(-50%, -50%);
+      }
+
+      /* =========================
+   답변 영역
+========================= */
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+
+        opacity: 0;
+        transition:
+          max-height 0.4s ease,
+          opacity 0.3s ease;
+      }
+
+      .faq-answer-inner {
+        padding: 0 64px 30px 68px;
+      }
+
+      .faq-answer p {
+        color: #77716e;
+        font-size: 14px;
+        line-height: 1.8;
+        word-break: keep-all;
+      }
+
+      /* =========================
+   FAQ가 열렸을 때
+========================= */
+
+      .faq-item.active {
+        background-color: rgba(79, 122, 117, 0.035);
+      }
+
+      .faq-item.active .faq-question-title {
+        color: #4f7a75;
+      }
+
+      .faq-item.active .faq-number {
+        color: #4f7a75;
+      }
+
+      .faq-item.active .faq-icon {
+        border-color: #4f7a75;
+        background-color: #4f7a75;
+      }
+
+      /* 열린 상태에서는 세로선을 회전시켜 × 모양으로 만듦 */
+      .faq-item.active .faq-icon::before {
+        background-color: #ffffff;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      .faq-item.active .faq-icon::after {
+        background-color: #ffffff;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      .faq-item.active .faq-answer {
+        opacity: 1;
+      }
+
+      /* =========================
+   태블릿
+========================= */
+
+      @media (max-width: 1000px) {
+        .faq-section {
+          padding: 80px 32px;
+        }
+
+        .faq-inner {
+          grid-template-columns: 1fr;
+          gap: 60px;
+        }
+
+        .faq-title {
+          font-size: 42px;
+        }
+
+        .faq-description {
+          max-width: 560px;
+        }
+      }
+
+      /* =========================
+   모바일
+========================= */
+
+      @media (max-width: 600px) {
+        .faq-section {
+          padding: 60px 20px;
+        }
+
+        .faq-inner {
+          gap: 46px;
+        }
+
+        .faq-label {
+          margin-bottom: 18px;
+        }
+
+        .faq-title {
+          font-size: 34px;
+        }
+
+        .faq-description {
+          margin-bottom: 32px;
+          font-size: 15px;
+        }
+
+        .faq-question {
+          min-height: 72px;
+          padding: 0 6px;
+
+          grid-template-columns: 28px 1fr 30px;
+          gap: 10px;
+        }
+
+        .faq-question-title {
+          font-size: 15px;
+        }
+
+        .faq-answer-inner {
+          padding: 0 42px 26px 44px;
+        }
+
+        .faq-answer p {
+          font-size: 13px;
+        }
+      }
+      /* =========================
+   CTA
+========================= */
+
+      .cta_section {
+        position: relative;
+        overflow: hidden;
+        background-color: #fffdfb;
+      }
+
+      .cta_content {
+        min-height: 520px;
+        padding-top: 60px;
+        background: linear-gradient(
+          to bottom,
+          #fffdfb 0%,
+          #fffdfb 38%,
+          #f5f8f7 38%,
+          #f5f8f7 100%
+        );
+      }
+
+      .cta_title_wrap {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+
+      .cta_title_top {
+        color: #315f5a;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.45;
+        word-break: keep-all;
+      }
+
+      .cta_title_bottom {
+        margin-top: 42px;
+        color: #315f5a;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .cta_info {
+        width: 100%;
+        max-width: 900px;
+        margin: 85px auto 0;
+        padding: 0 40px 48px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 65px;
+      }
+
+      .cta_visual {
+        width: 310px;
+        flex-shrink: 0;
+      }
+
+      .cta_visual img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .cta_text_wrap {
+        padding-top: 10px;
+      }
+
+      .cta_description {
+        color: #55514f;
+        font-size: 19px;
+        font-weight: 500;
+        line-height: 1.45;
+        word-break: keep-all;
+      }
+
+      .cta_btn_wrap {
+        margin-top: 35px;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .google_btn,
+      .appstore_btn {
+        display: block;
+        width: 145px;
+      }
+
+      .google_btn img,
+      .appstore_btn img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      /* =========================
+   FOOTER
+========================= */
+
+      .footer {
+        background-color: #285d58;
+        color: #ffffff;
+      }
+
+      .fooer_wrap {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 48px 45px 28px;
+      }
+
+      .footer_top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      .footer_logo {
+        display: block;
+        width: 85px;
+      }
+
+      .footer_logo img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .footer_nav {
+        width: 620px;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 65px;
+      }
+
+      .footer_nav ul {
+        list-style: none;
+      }
+
+      .footer_nav li + li {
+        margin-top: 8px;
+      }
+
+      .footer_nav a {
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.5;
+        text-decoration: none;
+      }
+
+      .footer_nav a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+
+      .footer_divider {
+        width: 100%;
+        height: 1px;
+        margin: 40px 0 28px;
+        background-color: rgba(255, 255, 255, 0.55);
+      }
+
+      .footer_bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .footer_copyright {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .footer_socail {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .footer_socail a {
+        display: block;
+        width: 30px;
+        height: 30px;
+      }
+
+      .footer_socail img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* =========================
+   태블릿
+========================= */
+
+      @media (max-width: 900px) {
+        .cta_info {
+          gap: 40px;
+        }
+
+        .cta_visual {
+          width: 270px;
+        }
+
+        .footer_top {
+          gap: 60px;
+        }
+
+        .footer_nav {
+          width: auto;
+          flex: 1;
+          gap: 35px;
+        }
+      }
+
+      /* =========================
+   모바일
+========================= */
+
+      @media (max-width: 700px) {
+        .cta_content {
+          padding-top: 50px;
+          background: linear-gradient(
+            to bottom,
+            #fffdfb 0%,
+            #fffdfb 35%,
+            #f5f8f7 35%,
+            #f5f8f7 100%
+          );
+        }
+
+        .cta_title_wrap {
+          padding: 0 20px;
+        }
+
+        .cta_title_top {
+          font-size: 15px;
+        }
+
+        .cta_title_bottom {
+          margin-top: 30px;
+          font-size: 18px;
+        }
+
+        .cta_info {
+          margin-top: 65px;
+          padding: 0 20px 45px;
+          flex-direction: column;
+          gap: 30px;
+          text-align: center;
+        }
+
+        .cta_visual {
+          width: 240px;
+        }
+
+        .cta_description {
+          font-size: 17px;
+        }
+
+        .cta_btn_wrap {
+          justify-content: center;
+          gap: 14px;
+        }
+
+        .google_btn,
+        .appstore_btn {
+          width: 135px;
+        }
+
+        .fooer_wrap {
+          padding: 40px 24px 25px;
+        }
+
+        .footer_top {
+          flex-direction: column;
+          gap: 35px;
+        }
+
+        .footer_nav {
+          width: 100%;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 30px;
+        }
+
+        .footer_bottom {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .footer_socail {
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="faq-section">
+      <div class="faq-inner">
+        <!-- 왼쪽 소개 영역 -->
+        <div class="faq-intro">
+          <span class="faq-label">FAQ</span>
+
+          <h1 class="faq-title">
+            나와에 대해<br />
+            <strong>궁금한 점이 있나요?</strong>
+          </h1>
+
+          <p class="faq-description">
+            나와를 시작하기 전에 많이 궁금해하는 내용을 모았어요. 질문을
+            선택하면 답변을 확인할 수 있어요.
+          </p>
+
+          <div class="faq-guide">
+            <span class="faq-guide-line"></span>
+            <span class="faq-guide-text"> 질문을 눌러 확인해 보세요 </span>
+          </div>
+        </div>
+
+        <!-- 오른쪽 FAQ 목록 -->
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span class="faq-number">01</span>
+
+              <span class="faq-question-title">
+                나와는 어떤 서비스인가요?
+              </span>
+
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  나와는 사용자가 자신의 감정과 생각을 쉽고 부담 없이 기록할 수
+                  있도록 돕는 서비스예요.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span class="faq-number">02</span>
+
+              <span class="faq-question-title">
+                기록하는 데 얼마나 걸리나요?
+              </span>
+
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  복잡한 문장을 직접 작성하지 않아도 돼요. 현재 마음과 가까운
+                  문장을 선택하면 짧은 시간 안에 기록을 마칠 수 있어요.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span class="faq-number">03</span>
+
+              <span class="faq-question-title">
+                패턴은 언제부터 확인할 수 있나요?
+              </span>
+
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  기록이 조금씩 쌓이면 반복해서 선택한 감정과 문장을 바탕으로
+                  나의 흐름과 패턴을 확인할 수 있어요.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span class="faq-number">04</span>
+
+              <span class="faq-question-title">
+                나와가 감정을 분석하거나 진단하나요?
+              </span>
+
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  나와는 사용자를 진단하거나 감정을 단정하지 않아요. 사용자가
+                  직접 남긴 기록을 다시 살피며 스스로를 정리해 볼 수 있도록 돕는
+                  역할을 해요.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 처음부터 열려 있는 항목 -->
+          <div class="faq-item active">
+            <button class="faq-question" type="button" aria-expanded="true">
+              <span class="faq-number">05</span>
+
+              <span class="faq-question-title">
+                기록한 내용은 안전하게 보관되나요?
+              </span>
+
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  기록은 사용자가 자신의 마음을 돌아보기 위한 개인적인 정보예요.
+                  정식 서비스에서는 개인정보 보호와 안전한 데이터 관리를 가장
+                  중요한 원칙으로 적용할 예정이에요.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CTA 영역 -->
+    <section class="cta_section">
+      <div class="cta_content">
+        <div class="cta_title_wrap">
+          <p class="cta_title_top">
+            패턴을 활용한 다양한 기능을 준비하고 있습니다.<br />
+            앞으로 더 많은 패턴 기반 기능이 추가될 예정입니다.
+          </p>
+
+          <h2 class="cta_title_bottom">기록은 끝이 아닙니다.</h2>
+        </div>
+
+        <div class="cta_info">
+          <div class="cta_visual">
+            <img src="img/cta/cta_road.png" alt="목표를 향해 이어지는 길" />
+          </div>
+
+          <div class="cta_text_wrap">
+            <p class="cta_description">
+              아직 만나지 못한 나를 발견하는 여정<br />
+              그 길을 나와가 함께 걷겠습니다.
+            </p>
+
+            <div class="cta_btn_wrap">
+              <a
+                class="google_btn"
+                href="#"
+                aria-label="Google Play에서 다운로드"
+              >
+                <img
+                  src="img/cta/google_play_btn.png"
+                  alt="Google Play에서 다운로드"
+                />
+              </a>
+
+              <a
+                class="appstore_btn"
+                href="#"
+                aria-label="App Store에서 다운로드"
+              >
+                <img
+                  src="img/cta/app_store_btn.png"
+                  alt="App Store에서 다운로드"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <div class="fooer_wrap">
+        <div class="footer_top">
+          <a class="footer_logo" href="#">
+            <img src="img/footer/footer_logo.png" alt="나와" />
+          </a>
+
+          <nav class="footer_nav" aria-label="푸터 메뉴">
+            <ul>
+              <li><a href="#">앱 소개</a></li>
+              <li><a href="#">기능 소개</a></li>
+              <li><a href="#">사용 방법</a></li>
+            </ul>
+
+            <ul>
+              <li><a href="#">개인정보 처리방침</a></li>
+              <li><a href="#">제휴 문의</a></li>
+              <li><a href="#">이용 약관</a></li>
+            </ul>
+
+            <ul>
+              <li><a href="#">문의하기</a></li>
+              <li><a href="#">자주 묻는 질문</a></li>
+              <li><a href="#">버그 리포트</a></li>
+              <li><a href="#">제휴 문의</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer_divider"></div>
+
+        <div class="footer_bottom">
+          <p class="footer_copyright">
+            © 2026 nowa. All rights reserved. Version 1.0
+          </p>
+
+          <div class="footer_socail">
+            <a href="#" aria-label="페이스북">
+              <img src="img/footer/facebook.png" alt="" />
+            </a>
+
+            <a href="#" aria-label="카카오톡">
+              <img src="img/footer/kakao.png" alt="" />
+            </a>
+
+            <a href="#" aria-label="인스타그램">
+              <img src="img/footer/instagram.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // 문서 안에 있는 모든 .faq-item을 가져옴
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      // FAQ 각각을 하나씩 꺼냄
+      faqItems.forEach(function (faqItem) {
+        // 현재 faqItem 안에서 질문 버튼을 찾음
+        const question = faqItem.querySelector(".faq-question");
+
+        // 현재 faqItem 안에서 답변 영역을 찾음
+        const answer = faqItem.querySelector(".faq-answer");
+
+        // HTML에서 처음부터 active가 붙어 있다면
+        // 그 답변의 실제 높이만큼 열어 둠
+        if (faqItem.classList.contains("active")) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+
+        // 질문 버튼을 클릭했을 때 실행
+        question.addEventListener("click", function () {
+          // 지금 누른 FAQ가 열려 있는지 확인
+          const isActive = faqItem.classList.contains("active");
+
+          // 모든 FAQ를 먼저 닫음
+          faqItems.forEach(function (item) {
+            const itemQuestion = item.querySelector(".faq-question");
+            const itemAnswer = item.querySelector(".faq-answer");
+
+            item.classList.remove("active");
+            itemQuestion.setAttribute("aria-expanded", "false");
+            itemAnswer.style.maxHeight = null;
+          });
+
+          // 원래 닫혀 있던 질문을 눌렀다면 다시 열어 줌
+          if (!isActive) {
+            faqItem.classList.add("active");
+            question.setAttribute("aria-expanded", "true");
+
+            // 답변 내용의 실제 높이를 계산해 열어 줌
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
