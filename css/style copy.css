@@ -1,0 +1,412 @@
+@import url(reset.css);
+@import url(common.css);
+
+/* //////////// header ///////////// */
+
+header {
+  width: 100%;
+  height: 80px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 10;
+}
+.header_wrap {
+  width: 100%;
+  height: 100%;
+  padding: 0 150px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(97, 97, 97, 0.041);
+}
+
+.logo {
+  width: 150px;
+  height: 40px;
+  margin-right: 250px;
+}
+.menu_wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+  color: #29524e;
+}
+
+/* ////////////// hero_section ///////////// */
+
+.hero_section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.hero_section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero_title_wrap {
+  position: absolute;
+  padding-top: 200px;
+  padding-left: 150px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.hero_title_wrap h3 {
+  color: #29524e;
+}
+.hero_subtitle h1 {
+  margin: 80px 0;
+}
+
+.hero_subtitle h1 span {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.hero_subtitle h1 img {
+  width: 180px;
+  vertical-align: middle;
+}
+.hero_subtitle h4 {
+  margin-bottom: 50px;
+}
+
+/* ////////////// faq_section ///////////// */
+
+/* .faq_section {
+  width: 100%;
+  height: 80vh;
+  background-color: #fffdfb;
+  border-top: 1px solid #66615f;
+  border-bottom: 1px solid #66615f;
+}
+
+.faq_wrap {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.faq_info {
+  width: 45%;
+}
+.faq_badge {
+  font-size: 14px;
+  color: #e58989;
+}
+.faq_title_wrap {
+  margin: 40px 0;
+}
+.faq_title h2:first-child {
+  color: #2c2a2a;
+  margin-bottom: 10px;
+}
+.faq_title h2:last-child {
+  color: #29524e;
+  margin-bottom: 50px;
+}
+.faq_title h6 {
+}
+.guide_text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 80px;
+}
+.guide_line {
+  width: 100px;
+  height: 1px;
+  background-color: #66615f;
+}
+.guide_text p {
+  font-size: 14px;
+}
+.faq_list {
+  width: 50%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.faq_item {
+  border-top: 1px solid #66615f;
+}
+.faq_item:last-child {
+  border-bottom: 1px solid #66615f;
+}
+.faq_question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.faq_question_title {
+  flex: 1;
+  margin: 0 20px;
+}
+.faq_icon {
+  width: 40px;
+  height: 40px;
+} */
+
+.faq_section {
+  width: 100%;
+  height: 80vh;
+  background-color: #fffdfb;
+  border-top: 1px solid #66615f;
+  border-bottom: 1px solid #66615f;
+
+  display: flex;
+  align-items: center;
+}
+
+.faq_wrap {
+  width: 85%;
+  height: 80%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq_info {
+  width: 45%;
+}
+
+.faq_badge {
+  font-size: 14px;
+  color: #e58989;
+}
+
+.faq_title_wrap {
+  margin: 40px 0;
+}
+
+.faq_title h2:first-child {
+  color: #2c2a2a;
+  margin-bottom: 10px;
+}
+
+.faq_title h2:last-child {
+  color: #29524e;
+  margin-bottom: 50px;
+}
+
+.faq_title h6 {
+  line-height: 2;
+  color: #66615f;
+}
+
+.guide_text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 80px;
+}
+
+.guide_line {
+  width: 100px;
+  height: 1px;
+  background-color: #66615f;
+}
+
+.guide_text p {
+  font-size: 14px;
+}
+
+.faq_list {
+  width: 50%;
+}
+
+.faq_item {
+  border-top: 1px solid #b4aaa7;
+}
+
+.faq_item:last-child {
+  border-bottom: 1px solid #b4aaa7;
+}
+
+.faq_question {
+  width: 100%;
+  height: 76px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq_number {
+  width: 30px;
+  flex-shrink: 0;
+
+  font-size: 13px;
+  color: #66615f;
+}
+
+.faq_question_title {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.faq_question_title h5 {
+  margin: 0;
+  color: #2c2a2a;
+}
+
+.faq_icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.faq_icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.faq_answer {
+  display: none;
+}
+
+.faq_answer_inner {
+  padding: 0 68px 30px;
+}
+
+.faq_answer_inner p {
+  line-height: 1.8;
+  color: #66615f;
+}
+
+.faq_item.active {
+  background-color: #f8f4f2;
+}
+
+.faq_item.active .faq_answer {
+  display: block;
+}
+
+.faq_item.active .faq_number,
+.faq_item.active .faq_question_title h5 {
+  color: #29524e;
+}
+
+/* ////////////// cta_section ///////////// */
+.cta_section {
+  position: relative;
+  height: 80vh;
+}
+.cta_section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cta_content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  justify-content: space-between;
+  top: 100px;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.cta_title {
+  text-align: center;
+}
+.cta_title h3 {
+  color: #29524e;
+  margin-bottom: 50px;
+}
+.cta_title h3 span {
+  color: #e58989;
+}
+.cta_title p {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #29524e;
+}
+.cta_description {
+  margin-left: 15%;
+  margin-bottom: 50px;
+}
+.cta_description h3 span {
+  color: #29524e;
+}
+.cta_btn_wrap {
+  margin-left: 15%;
+}
+
+/* //////////////// 푸터 ///////////////// */
+
+footer {
+  background-color: #29524e;
+  width: 100%;
+  color: #fffdfb;
+  font-size: 14px;
+  font-weight: 100;
+}
+.footer_wrap {
+  width: 80%;
+  padding: 60px 0;
+  margin: 0 auto;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+}
+.footer_top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.footer_nav {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+.footer_nav ul {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15%;
+}
+.footer_nav ul li {
+  margin-bottom: 10px;
+}
+.footer_divider {
+  height: 1px;
+  background-color: #fffdfb;
+  margin: 40px 0;
+}
+.footer_bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_social {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 12%;
+}
+.footer_social a {
+  width: 30px;
+  height: 30px;
+}
