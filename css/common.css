@@ -294,12 +294,12 @@ h6 {
     align-items: center;
   }
 
-  .img_wrap img {
+  /* .img_wrap img {
     width: 85%;
     max-width: 350px;
     min-width: 0;
   }
-
+ */
   .con_wrap {
     align-items: center;
     text-align: center;
@@ -372,11 +372,20 @@ h6 {
   .section_wrap {
     padding: 70px 18px;
   }
-
-  .img_wrap img {
-    width: 50%;
-    min-width: 0;
+   .section_wrap .img_wrap {
+    width: 150px !important;
+    max-width: 150px !important;
+    min-width: 0 !important;
+    flex: none !important;
   }
+
+  .section_wrap .img_wrap img {
+    width: 150px !important;
+    max-width: 150px !important;
+    min-width: 0 !important;
+    height: auto !important;
+  }
+}
 
   .icon_wrap {
     gap: 8px;
