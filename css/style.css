@@ -28,7 +28,6 @@ header {
   margin-right: 250px;
 }
 
-/* 수정: 로고 이미지가 부모 크기에 맞도록 설정 */
 .logo a,
 .logo img {
   width: 100%;
@@ -48,10 +47,8 @@ header {
   color: #29524e;
 }
 
-/* 수정: 링크 색상이 브라우저 기본색으로 나오지 않도록 설정 */
 .menu_wrap a {
   color: #29524e;
-  white-space: nowrap;
 }
 
 /* ////////////// hero_section ///////////// */
@@ -59,16 +56,11 @@ header {
 .hero_section {
   width: 100%;
   height: 100vh;
-  min-height: 750px; /* 수정: 화면 높이가 작아도 내용이 겹치지 않게 설정 */
+  min-height: 750px;
   position: relative;
-  overflow: hidden; /* 수정: 이미지가 영역 밖으로 넘치는 현상 방지 */
+  overflow: hidden;
 }
 
-/*
-  수정:
-  기존 .hero_section img는 히어로 안의 모든 이미지에 적용됐음.
-  >를 넣어서 히어로 바로 아래의 배경 이미지만 선택함.
-*/
 .hero_section > img {
   width: 100%;
   height: 100%;
@@ -106,7 +98,7 @@ header {
   width: 180px;
   height: auto; /* 수정: 부모 이미지 스타일의 영향을 받지 않도록 설정 */
   vertical-align: middle;
-  display: inline-block; /* 수정 */
+  display: inline-block;
   object-fit: contain;
 }
 
@@ -114,7 +106,6 @@ header {
   margin-bottom: 50px;
 }
 
-/* 수정: 버튼 이미지 크기가 부모 버튼에 맞도록 설정 */
 .hero_btn_wrap {
   display: flex;
   align-items: center;
@@ -131,13 +122,12 @@ header {
   display: block;
 }
 
-
 /* ////////////// faq_section ///////////// */
 
 .faq_section {
   width: 100%;
   height: 80vh;
-  min-height: 650px; /* 수정: FAQ 답변이 열려도 영역이 너무 작아지지 않도록 설정 */
+  min-height: 650px;
   background-color: #fffdfb;
   border-top: 1px solid #66615f;
   border-bottom: 1px solid #66615f;
@@ -213,8 +203,8 @@ header {
 
 .faq_question {
   width: 100%;
-  min-height: 76px; /* 수정: height 대신 min-height로 변경 */
-  padding: 15px 18px; /* 수정: 글이 두 줄이 되어도 여백 유지 */
+  min-height: 76px;
+  padding: 15px 18px;
   display: flex;
   align-items: center;
   border: none;
@@ -284,15 +274,8 @@ header {
 .cta_section {
   position: relative;
   height: 80vh;
-  min-height: 650px; /* 수정 */
-  overflow: hidden; /* 수정 */
 }
 
-/*
-  수정:
-  CTA 안의 모든 이미지가 아니라
-  CTA 바로 아래 배경 이미지만 선택함.
-*/
 .cta_section > img {
   width: 100%;
   height: 100%;
@@ -301,11 +284,11 @@ header {
 }
 
 .cta_content {
-  width: 70%; /* 수정: 화면이 줄어들 때 내용의 기준 폭을 갖도록 설정 */
   display: flex;
   flex-direction: column;
   position: absolute;
   justify-content: space-between;
+  align-items: center;
   top: 100px;
   bottom: 100px;
   left: 50%;
@@ -333,8 +316,8 @@ header {
 }
 
 .cta_description {
-  margin-left: 15%;
-  margin-bottom: 50px;
+  /* margin-left: 15%;
+  margin-bottom: 50px; */
 }
 
 .cta_description h3 span {
@@ -342,13 +325,12 @@ header {
 }
 
 .cta_btn_wrap {
-  margin-left: 15%;
-  display: flex; /* 수정 */
-  align-items: center; /* 수정 */
-  gap: 10px; /* 수정 */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
 }
 
-/* 수정: CTA 안 앱스토어 버튼 이미지 크기 */
 .cta_btn_wrap .btn {
   display: block;
 }
@@ -370,11 +352,6 @@ footer {
 }
 
 .footer_wrap {
-  /*
-    수정:
-    기존에 width: 80%와 width: 85%가 동시에 있어서
-    실제로 적용되는 85%만 남김.
-  */
   width: 85%;
   padding: 60px 0;
   margin: 0 auto;
@@ -389,7 +366,7 @@ footer {
 }
 
 .footer_logo {
-  flex-shrink: 0; /* 수정 */
+  flex-shrink: 0;
 }
 
 .footer_logo a,
@@ -415,7 +392,7 @@ footer {
 }
 
 .footer_nav ul:last-child {
-  margin-right: 0; /* 수정 */
+  margin-right: 0;
 }
 
 .footer_nav ul li {
@@ -423,7 +400,7 @@ footer {
 }
 
 .footer_nav a {
-  color: #fffdfb; /* 수정 */
+  color: #fffdfb;
 }
 
 .footer_divider {
@@ -443,7 +420,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   width: 12%;
-  min-width: 120px; /* 수정: 아이콘이 너무 붙지 않도록 설정 */
+  min-width: 120px;
 }
 
 .footer_social a {
@@ -460,12 +437,10 @@ footer {
 }
 
 /* ==================================================
-   태블릿 반응형
-   화면 너비 1200px 이하
+   반응형   
 ================================================== */
 
 @media screen and (max-width: 1200px) {
-  /* 반응형 추가: 좌우 고정 여백 축소 */
   .header_wrap {
     padding: 0 60px;
   }
@@ -491,7 +466,6 @@ footer {
     width: 150px;
   }
 
-  /* 반응형 추가: 섹션 내용 폭 확대 */
   .section_wrap {
     width: 90%;
   }
@@ -538,14 +512,7 @@ footer {
   }
 }
 
-/* ==================================================
-   모바일·작은 태블릿 반응형
-   화면 너비 768px 이하
-================================================== */
-
 @media screen and (max-width: 768px) {
-  /* ////////// header ////////// */
-
   header {
     height: 64px;
   }
@@ -560,28 +527,16 @@ footer {
     height: auto;
     margin-right: 0;
   }
-
-  /*
-    반응형 추가:
-    모바일 시안처럼 헤더가 좁아지므로 메뉴를 숨김.
-    나중에 햄버거 버튼을 만들면 이 부분을 바꾸면 됨.
-  */
-  .menu_wrap {
+  /* .menu_wrap {
     display: none;
   }
-
-  /* ////////// hero ////////// */
+ */
 
   .hero_section {
     height: auto;
     min-height: 720px;
   }
 
-  /*
-    반응형 추가:
-    모바일에서는 배경 이미지의 중심을 오른쪽으로 이동해
-    휴대폰 이미지가 잘 보이게 함.
-  */
   .hero_section > img {
     position: absolute;
     inset: 0;
@@ -623,12 +578,6 @@ footer {
   }
 
   /* ////////// section 2 ~ section 5 ////////// */
-
-  /*
-    반응형 추가:
-    기존 좌우 배치를 세로 배치로 변경.
-    grid 없이 flex만 사용함.
-  */
   .section_wrap {
     width: 100%;
     padding: 80px 24px;
@@ -663,12 +612,6 @@ footer {
     width: 85%;
     max-width: 350px;
   }
-
-  /*
-    반응형 추가:
-    HTML 순서를 바꾸지 않고 모바일 시안의 순서로 정렬.
-    섹션 2·4는 글 먼저, 이미지 나중.
-  */
   .section_wrap_2 .con_wrap,
   .section_wrap_4 .con_wrap {
     order: 1;
@@ -678,11 +621,6 @@ footer {
   .section_wrap_4 .img_wrap {
     order: 2;
   }
-
-  /*
-    섹션 3·5는 HTML에서 이미 글이 먼저이므로
-    기본 순서를 그대로 사용.
-  */
   .section_wrap_3 .con_wrap,
   .section_wrap_5 .con_wrap {
     order: 1;
@@ -709,8 +647,6 @@ footer {
     font-size: 12px;
     white-space: nowrap;
   }
-
-  /* ////////// FAQ ////////// */
 
   .faq_section {
     height: auto;
@@ -784,37 +720,27 @@ footer {
     padding: 0 45px 25px;
   }
 
-  /*
-    반응형 추가:
-    HTML에 넣어둔 br 때문에 모바일에서 문장이 너무 짧게 잘릴 수 있어
-    FAQ 답변 내부 줄바꿈을 무시함.
-  */
-  .faq_answer_inner br {
-    display: none;
-  }
-
-  /* ////////// CTA ////////// */
-
   .cta_section {
-    height: auto;
+    height: 600px;
     min-height: 700px;
   }
 
   .cta_section > img {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     object-position: center;
   }
 
   .cta_content {
-    width: 100%;
-    min-height: 700px;
-    padding: 80px 24px 60px;
-    position: relative;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    transform: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: space-between;
+    top: 100px;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .cta_title h3 {
@@ -843,7 +769,6 @@ footer {
 
   .cta_description h3 {
     font-size: 18px;
-    line-height: 1.8;
   }
 
   .cta_btn_wrap {
@@ -854,8 +779,6 @@ footer {
   .cta_btn_wrap .btn {
     width: 120px;
   }
-
-  /* ////////// footer ////////// */
 
   .footer_wrap {
     width: 100%;
@@ -915,11 +838,6 @@ footer {
   }
 }
 
-/* ==================================================
-   작은 모바일 반응형
-   화면 너비 480px 이하
-================================================== */
-
 @media screen and (max-width: 480px) {
   .header_wrap {
     padding: 0 18px;
@@ -936,6 +854,9 @@ footer {
 
   .hero_subtitle h1 img {
     width: 100px;
+  }
+  .menu_wrap {
+    display: none;
   }
 
   .hero_btn_wrap .btn,
@@ -975,7 +896,9 @@ footer {
   .faq_answer_inner p {
     font-size: 13px;
   }
-
+  .cta_section {
+    height: 400px;
+  }
   .cta_content {
     padding-left: 18px;
     padding-right: 18px;
@@ -984,19 +907,6 @@ footer {
   .footer_wrap {
     padding-left: 18px;
     padding-right: 18px;
-  }
-
-  /*
-    반응형 추가:
-    아주 좁은 화면에서는 푸터 메뉴가 너무 눌리지 않도록
-    줄바꿈을 허용함.
-  */
-  .footer_nav {
-    flex-wrap: wrap;
-  }
-
-  .footer_nav ul {
-    flex: 0 0 calc(50% - 10px);
   }
 
   .footer_bottom {

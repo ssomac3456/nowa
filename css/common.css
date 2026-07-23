@@ -24,14 +24,7 @@ h3 {
 h4 {
   font-size: 24px;
   font-weight: 500;
-
-  /*
-    수정:
-    기존에 line-height가 1.2와 45px로 두 번 작성되어 있었음.
-    마지막에 작성된 45px만 실제 적용되므로 하나만 남김.
-  */
   line-height: 45px;
-
   color: #2c2a2a;
 }
 
@@ -61,14 +54,14 @@ h6 {
 .btn {
   width: 200px;
   height: 63px;
-  display: block; /* 수정: a 태그 크기가 안정적으로 적용되도록 추가 */
+  display: block;
 }
 
 .btn_wrap a img {
   width: 100%;
   height: 100%;
-  display: block; /* 수정: 이미지 아래 생기는 미세한 여백 제거 */
-  object-fit: contain; /* 수정: 이미지 비율 유지 */
+  display: block;
+  object-fit: contain;
 }
 
 /* ////////// 섹션 공통 /////////// */
@@ -99,39 +92,19 @@ h6 {
   background-color: #648a791f;
 }
 
-/*
-  수정:
-  기존 선택자는 너무 길었음.
-
-  기존:
-  .section .section_wrap .img_wrap
-
-  변경:
-  .img_wrap
-
-  현재 HTML에서는 img_wrap이 섹션 이미지 영역에만 사용되므로
-  짧게 써도 충분함.
-*/
 .img_wrap {
   width: 30%;
-  flex-shrink: 0; /* 수정: 화면이 좁아질 때 이미지 영역이 과도하게 찌그러지지 않게 함 */
+  flex-shrink: 0;
 }
 
 .img_wrap img {
   width: 100%;
   max-width: 300px;
   min-width: 200px;
-  height: auto; /* 수정: 이미지 원래 비율 유지 */
+  height: auto;
   display: block;
-  object-fit: contain; /* 수정: 이미지 찌그러짐 방지 */
+  object-fit: contain;
 }
-
-/*
-  기존 overflow: hidden은 img 자체에 들어가 있었는데,
-  이미지에는 보통 필요하지 않아 삭제함.
-
-  이미지를 잘라야 할 때는 img_wrap에 overflow: hidden을 넣는 게 맞음.
-*/
 
 .con_wrap {
   width: 45%;
@@ -152,7 +125,7 @@ h6 {
 
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start; /* 수정: 글자 길이가 달라도 원형 아이콘 높이를 맞춤 */
+  align-items: flex-start;
   gap: 8%;
 }
 
@@ -163,14 +136,13 @@ h6 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  text-align: center; /* 수정: 아이콘 아래 문구 가운데 정렬 */
+  text-align: center;
 }
 
 .iconcircle {
   width: 80px;
   height: 80px;
-  flex-shrink: 0; /* 수정: 원이 타원으로 눌리는 현상 방지 */
+  flex-shrink: 0;
 
   display: flex;
   justify-content: center;
@@ -183,19 +155,17 @@ h6 {
 
 .iconcircle img {
   width: 30%;
-  height: 30%; /* 수정: 아이콘 이미지 높이도 일정하게 맞춤 */
+  height: 30%;
   display: block;
   object-fit: contain;
 }
 
 /* ==================================================
-   태블릿 반응형
-   화면 너비 1200px 이하
+ 반응형
+  
 ================================================== */
 
 @media screen and (max-width: 1200px) {
-  /* 반응형 추가: 데스크톱보다 글자 크기를 조금 줄임 */
-
   h1 {
     font-size: 64px;
   }
@@ -258,14 +228,7 @@ h6 {
   }
 }
 
-/* ==================================================
-   모바일·작은 태블릿 반응형
-   화면 너비 768px 이하
-================================================== */
-
 @media screen and (max-width: 768px) {
-  /* ////////// 글자 크기 ////////// */
-
   h1 {
     font-size: 34px;
     line-height: 1.35;
@@ -296,30 +259,19 @@ h6 {
     line-height: 1.8;
   }
 
-  /* ////////// 버튼 ////////// */
-
   .btn_wrap {
     gap: 8px;
   }
 
- .btn {
-  width: 200px;
-  aspect-ratio: 200 / 63;
-  height: auto;
-}
-
-
-  /* ////////// 섹션 ////////// */
+  .btn {
+    width: 200px;
+    aspect-ratio: 200 / 63;
+    height: auto;
+  }
 
   .section {
     padding: 0;
   }
-
-  /*
-    반응형 추가:
-    데스크톱의 좌우 구조를 모바일에서는 세로 구조로 변경.
-    grid 없이 flex만 사용함.
-  */
   .section_wrap {
     width: 100%;
     max-width: none;
@@ -345,7 +297,7 @@ h6 {
   .img_wrap img {
     width: 85%;
     max-width: 350px;
-    min-width: 0; /* 수정: 기존 200px 제한을 모바일에서는 해제 */
+    min-width: 0;
   }
 
   .con_wrap {
@@ -356,12 +308,6 @@ h6 {
   .con_wrap h4 {
     margin: 20px 0 0;
   }
-
-  /*
-    반응형 추가:
-    모든 섹션을 모바일에서
-    글 → 아이콘 → 휴대폰 이미지 순서로 보이게 함.
-  */
 
   .section_wrap_2 .con_wrap,
   .section_wrap_3 .con_wrap,
@@ -385,10 +331,6 @@ h6 {
   }
 
   .icon {
-    /*
-      수정:
-      모바일에서는 고정 22% 대신 flex로 같은 너비를 나눠 가짐.
-    */
     width: auto;
     flex: 1;
     min-width: 0;
@@ -406,12 +348,6 @@ h6 {
     white-space: nowrap;
   }
 }
-
-/* ==================================================
-   작은 모바일 반응형
-   화면 너비 480px 이하
-================================================== */
-
 @media screen and (max-width: 480px) {
   h1 {
     font-size: 30px;
