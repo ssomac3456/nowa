@@ -372,7 +372,7 @@ h6 {
   .section_wrap {
     padding: 70px 18px;
   }
-   .section_wrap .img_wrap {
+  .section_wrap .img_wrap {
     width: 150px !important;
     max-width: 150px !important;
     min-width: 0 !important;
@@ -385,7 +385,6 @@ h6 {
     min-width: 0 !important;
     height: auto !important;
   }
-}
 
   .icon_wrap {
     gap: 8px;
